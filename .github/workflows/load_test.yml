@@ -1,0 +1,16 @@
+name: load test
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_file_path:
+        type: string
+        required: true
+        description: k6/ 配下のファイルパス
+
+jobs:
+  run:
+    runs-on: codebuild-webapp_sample_rs-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - sample: |
+          echo "sample workflow ${{ inputs.test_file_path }}"
